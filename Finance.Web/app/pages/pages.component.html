@@ -1,0 +1,11 @@
+﻿<span *ngIf="_pagesCount>1">
+    <span *ngFor="let page of pages" >
+        <span class="btn btn-link" *ngIf="currentPage!=page" (click)="build(page)" id="{{page}}">
+            {{page}} 
+        </span>
+        <span class="btn btn-link" *ngIf="currentPage==page" (click)="build(page)" style="background-color: azure" id="{{page}}">
+            <strong>{{page}}</strong> 
+        </span>
+    </span>
+</span>
+

@@ -1,0 +1,27 @@
+﻿<div class="col-md-3">
+    <h4>Upload raw data</h4>
+    <div [attr.disabled]="isUploadingNow ? true : null" class="fileUpload btn btn-primary">
+        <span>Upload</span>
+        <input [disabled]="isUploadingNow" type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload" />
+    </div>
+</div>
+<div class="col-md-3">
+    <img *ngIf="isUploadingNow" style="height:150px;width:150px" src="http://www.mvgen.com/loader.gif" />
+</div>
+<div class="col-md-3">
+    <h4>Upload dictionary</h4>
+    <select [disabled]="isUploadingNow" class="form-control" id="dictionaryType" name="dictionaryType" [(ngModel)]="dictionaryType" >
+        <option [attr.value]="AccountName">AccountName</option>
+        <option [attr.value]="ProjectBu">ProjectBu</option>
+        <option [attr.value]="Location">Location</option>
+        <option [attr.value]="Team">Team</option>
+        <option [attr.value]="UsernameName">UsernameName</option>
+        <option [attr.value]="Vacations">Vacations</option>
+    </select>
+    <br>
+    <div [attr.disabled]="isUploadingNow ? true : null" class="fileUpload btn btn-primary">
+        <span>Upload</span>
+        <input [disabled]="isUploadingNow" type="file" id="btnUpload" value="Upload" (change)="fileDictionaryChange($event)" class="upload" />
+    </div>
+    <br>
+</div>

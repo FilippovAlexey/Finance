@@ -1,0 +1,28 @@
+﻿<table id="mainTable" class="table table-bordered" style="visibility: visible">
+    <thead class="thead bg-primary">
+        <tr>
+            <th>User Name</th>
+            <th>Team</th>
+            <th>Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let leave of model">
+            <ng-container *ngFor='let key of leave | keys | slice:1'>
+                <td *ngIf="key.key === 'status'">
+                    {{key.value}} 
+                    <div class="btn-group col-md-8" role="group" style="float: right">
+                        <button class="btn btn-success input-block-level col-md-6" (click)="changeStatus(leave.leaveId, 2)"> Approve </button>
+                        <button class="btn btn-danger input-block-level col-md-6" (click)="changeStatus(leave.leaveId, 3)"> Reject </button>
+                    </div>
+                </td>
+                <td *ngIf="key.key != 'status'">{{key.value}}</td>
+            </ng-container>
+        </tr>
+    </tbody>
+
+</table>

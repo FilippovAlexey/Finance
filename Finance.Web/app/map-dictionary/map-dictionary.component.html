@@ -1,0 +1,35 @@
+﻿<ul class="nav nav-tabs">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" id="{{tab}}" [class.active]="tab.value">
+        <a role="button" >{{tab.key}}</a>
+    </li>
+</ul>
+
+<div class="col-md-12" *ngIf="!dataLoading">
+    <table>
+        <ng-container *ngFor="let unmapped of listUnmapped">
+            <tr>
+                <td>
+                    <h4>{{unmapped.key}}</h4>
+                </td>
+                <td>
+                    <select class="form-control" id="{{unmapped.key}}" (change)="setMapping($event.target)">
+                        <option *ngFor="let object of dictionaryValues" id="{{object?.key}}" [ngValue]="object?.key">{{object?.value}}</option>
+                    </select>
+                </td>
+                <td><span>{{unmapped.value}}</span></td>
+            </tr>
+        </ng-container>
+    </table>
+</div>
+
+<img *ngIf="dataLoading" style="height:150px;width:150px;margin: auto;display: block;" src="http://www.mvgen.com/loader.gif" />
+<div>
+    <pages [pagesCount]="this.pagesCount" (click)="changePage($event)"></pages>
+    <br>
+    <button class="btn btn-primary" [attr.disabled]="dataLoading ? true : null" (click)="updateMappings()">Save</button>
+</div>
+
+
+
+
+

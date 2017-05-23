@@ -1,0 +1,25 @@
+﻿
+<table id="mainTable" class="table table-bordered" style="visibility: visible">
+    <thead class="thead bg-primary">
+        <tr>
+            <th>Leave Type</th>
+            <th>Actual Duration</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Approver</th>
+            <th>Jira issue key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let leave of leaves; let i=index">
+            <td *ngFor='let key of leave | keys'>
+                {{key.value}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+

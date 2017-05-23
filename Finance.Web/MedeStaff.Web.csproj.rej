@@ -1,0 +1,10 @@
+--- MedeStaff.Web.csproj
++++ MedeStaff.Web.csproj
+@@ -385,6 +390,7 @@
+     <TypeScriptCompile Include="app\_services\index.ts" />
+     <TypeScriptCompile Include="app\_services\leave.service.ts" />
+     <TypeScriptCompile Include="app\_services\pipe.service.ts" />
++    <TypeScriptCompile Include="app\_services\report.service.ts" />
+   </ItemGroup>
+   <ItemGroup>
+     <ProjectReference Include="..\MedeStaff.Common\MedeStaff.Common.csproj">

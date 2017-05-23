@@ -1,0 +1,16 @@
+﻿export * from './http.service';
+export * from './alert.service';
+export * from './authentication.service';
+export * from './leave.service';
+export * from './global.service';
+export * from './pipe.service';
+export * from './user.service';
+export * from './report.service';
+export * from './team.calendar.service';
+export * from './approve.service';
+export * from './file-load.service';
+export * from './date.service';
+<<<<<<< working copy
+export * from './map-dictionary.service';=======
+export * from './map-account.service';
+export * from './view-data.service'>>>>>>> merge rev

@@ -1,0 +1,90 @@
+﻿<div>
+    <tab-control>
+        <tab [tabTitle]="'Users'">
+            <br>
+            <div class="col-md-3">
+                <button (click)="getPreviousPage()"><</button>
+                {{filter.page}}
+                <button (click)="getNextPage()">></button>
+            </div>
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select class="selectpicker" [(ngModel)]="filter.locations" name="Locations" data-none-Selected-Text="Locations" data-live-search="true" multiple data-selected-text-format="count > 3">
+                        <option *ngFor="let object of filterData?.locations" [ngValue]="object?.key">{{object?.value}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Team</label>
+                    <select class="selectpicker" [(ngModel)]="filter.teams" name="Teams" data-none-Selected-Text="Team" data-live-search="true" multiple data-selected-text-format="count > 3">
+                        <option *ngFor="let object of filterData?.teams" [ngValue]="object?.key">{{object?.value}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="Name" [(ngModel)]="filter.name" placeholder="Enter name"/>
+                </div>
+                <button class="btn btn-primary" (click)="getUsers()">Search</button>
+            </form>
+            <br>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Team</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let item of userModel">
+                    <tr>
+                        <td>{{item.name}}</td>
+                        <td>{{item.location}}</td>
+                        <td>{{item.team}}</td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </tab>
+        <tab tabTitle="Projects">
+            <br>
+            <div class="col-md-3">
+                <button (click)="getPreviousProjectBuPage()"><</button>
+                {{filter.projectBuPage}}
+                <button (click)="getNextProjectBuPage()">></button>
+            </div>
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>BizUnits</label>
+                    <select class="selectpicker" [(ngModel)]="filter.bizUnits" name="BizUnits" data-none-Selected-Text="BizUnits" data-live-search="true" multiple data-selected-text-format="count > 3">
+                        <option *ngFor="let object of filterData?.bizUnits" [ngValue]="object?.key">{{object?.value}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="project" name="Project" [(ngModel)]="filter.project" placeholder="Enter project name"/>
+                </div>
+                <button class="btn btn-primary" (click)="getProjectsBu()">Search</button>
+            </form>
+            <br>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>BizUnit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let item of projectBuModel">
+                    <tr>
+                        <td>{{item.project}}</td>
+                        <td>{{item.bizUnit}}</td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </tab>
+    </tab-control>
+</div>

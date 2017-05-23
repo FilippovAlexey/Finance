@@ -1,0 +1,85 @@
+﻿
+<form name="form" (ngSubmit)="add()" #f="ngForm" novalidate>
+    <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-5">
+                            <label for="leaveType">Select leave type:</label>
+                            <select class="form-control" id="leaveType" name="leaveType" [(ngModel)]="model.leaveType" #type="ngModel">
+                                <option *ngFor="let lType of model.leaveTypeOptions" [ngValue]="lType.id">{{lType.caption}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <!--if leaveType == BusinessTrip-->
+                            <ng-container *ngIf="model.leaveType == 4">
+                                <label for="calendarType">Select destination:</label>
+                                <select class="form-control" id="calendarType" name="calendarType" [(ngModel)]="model.calendarType" #type="ngModel">
+                                    <option *ngFor="let cType of model.calendarTypeOptions" [ngValue]="cType.id">{{cType.caption}}</option>
+                                </select>
+
+                            </ng-container>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <label for="summary">Summary:</label>
+                        <input type="text" class="form-control" id="summary" style="max-width: 100%" name="summary" [(ngModel)]="model.summary" #summary="ngModel">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5">
+                        <label for="start">Start Date:</label>
+                        <input type="date" style="max-width: 100%" id="start" class="form-control" name="startDate" [(ngModel)]="model.startDate" #startDate="ngModel" />
+                    </div>
+                    <div class="col-md-5">
+                        <label for="end">End Date:</label>
+                        <input type="date" style="max-width: 100%" id="end" class="form-control" name="endDate" [(ngModel)]="model.endDate" #endDate="ngModel" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" rows="5" id="description" style="max-width: 100%" name="description" [(ngModel)]="model.description" #description="ngModel"></textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5">
+                        <label for="approver">Approver:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            </div>
+                            <input type="text" style="max-width: 100%" class="form-control" id="approver" name="approver" [(ngModel)]="model.approver" #approver="ngModel">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="backup">Backup:</label>
+                        <select class="selectpicker form-control" style="max-width: 100%" [(ngModel)]="model.backup" name="backup" data-none-Selected-Text="Backup" data-live-search="true" multiple data-selected-text-format="count > 3">
+                            <option *ngFor="let object of users" [ngValue]="object">{{object}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <button class="btn btn-default col-md-offset-1 col-md-4" type="button" (click)="showActualDuration()">Calculate actual duration</button>
+                    <button *ngIf="confirmedActualDuration" class="btn btn-primary col-md-offset-1 col-md-2" type="submit">Accept</button>
+                    <button class="btn btn-default col-md-2" type="reset" (click)="backClicked()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+    });
+</script>

@@ -1,0 +1,11 @@
+--- Web.config
++++ Web.config
+@@ -15,7 +15,7 @@
+   </connectionStrings>-->
+ 
+   <connectionStrings>
+-    <add name="MedeStaff" connectionString="data source=.\SQLEXPRESS;Initial Catalog=MedeStaffDB;Integrated Security=True;" providerName="System.Data.SqlClient" />
++    <add name="MedeStaff" providerName="System.Data.SqlClient" connectionString="Server=localhost;Database=MedeStaffDb;Integrated Security=True;" />
+   </connectionStrings>
+   
+   

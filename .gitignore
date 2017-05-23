@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Finance.Common/bin/Debug
+/Finance.Common/bin/Release
+/Finance.Common/obj
+/Finance.DataAccess/bin
+/Finance.DataAccess/obj
+/Finance.Services/bin
+/Finance.Services/obj
+/Finance.Tests/bin/Debug
+/Finance.Tests/bin/Debug
+/Finance.Tests/bin/Debug
+/Finance.Web/bin
+/Finance.Web/obj
+/Finance.Tests/obj
+/Finance.Web/node_modules
+/node_modules/ng2-file-upload
+/packages

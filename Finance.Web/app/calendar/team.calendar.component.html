@@ -1,0 +1,72 @@
+﻿<div align="center">
+    <div style="display: inline-block"> <h4>Start date</h4> <input type="date" class="form-control" name="startDate" [(ngModel)]="model.startDate" (ngModelChange)="initCalendar()" #startDate="ngModel" /></div>
+    <div style="display: inline-block"> <h4>End date</h4> <input type="date" class="form-control" name="endDate" [(ngModel)]="model.endDate" (ngModelChange)="initCalendar()" #endDate="ngModel" /></div>
+    
+    <select class="form-control" id="team" name="team" [(ngModel)]="model.team" (ngModelChange)="initCalendar()" #team="ngModel" style="display: inline-block">
+        <option *ngFor="let team of filter.teams" [ngValue]="team">{{team}}</option>
+    </select>
+    <select class="form-control" id="department" name="department" [(ngModel)]="model.department" (ngModelChange)="initCalendar()" #team="ngModel" style="display: inline-block">
+        <option *ngFor="let department of filter.departments" [ngValue]="department">{{department}}</option>
+    </select>
+    <br><br>
+
+</div>
+
+<div class="outerTable">
+    <div class="innerTable">
+        <table class="table table-bordered">
+            <tr>
+                <th class="fix" style="visibility: collapse"></th>
+                <th *ngFor="let day of calendar?.daysOfWeek" style="border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    <small>{{day}}</small>
+                </th>
+                <th style="border-width:2px;"></th>
+            </tr>
+            <tr>
+                <th class="fix" style="visibility: collapse"></th>
+                <th *ngFor="let title of calendar?.titles" style="border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+                    {{title}}
+                </th>
+            </tr>
+            <tr *ngFor="let row of calendar?.rows">
+                <th class="fix">
+                    {{row.fullUserName}}
+                </th>
+                <ng-container *ngFor="let cell of row?.cells">
+                    <ng-container *ngIf="cell.isMarked">
+                        <ng-container *ngIf="cell.type === '1'">
+                            <td class={{leaveTypes[0]}}></td>
+                        </ng-container>
+                        <ng-container *ngIf="cell.type === '2'">
+                            <td class={{leaveTypes[1]}}></td>
+                        </ng-container>
+                        <ng-container *ngIf="cell.type === '3'">
+                            <td class={{leaveTypes[2]}}></td>
+                        </ng-container>
+                        <ng-container *ngIf="cell.type === '4'">
+                            <td class={{leaveTypes[3]}}></td>
+                        </ng-container>
+                        <ng-container *ngIf="cell.type === '5'">
+                            <td class={{leaveTypes[4]}}></td>
+                        </ng-container>
+                        <ng-container *ngIf="cell.type === '6'">
+                            <td class={{leaveTypes[5]}}></td>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!cell.isMarked">
+                        <td></td>
+                    </ng-container>
+                </ng-container>
+                <td align="center">
+                    {{row.totalLeaveDays}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+

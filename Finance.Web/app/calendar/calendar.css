@@ -1,0 +1,24 @@
+﻿
+.workOnHoliday {
+    background-color: chartreuse !important;
+}
+
+.vacation {
+    background-color: bisque;
+}
+
+.ownExpense {
+    background-color: coral;
+}
+
+.sickness {
+    background-color: burlywood;
+}
+
+.businessTrip {
+    background-color: chocolate;
+}
+
+.maternityLeave {
+    background-color:darkorange
+}
