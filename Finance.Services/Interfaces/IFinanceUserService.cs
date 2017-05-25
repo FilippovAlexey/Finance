@@ -12,5 +12,7 @@ namespace Finance.Services.Interfaces
     {
         void AddFinanceUser(FinanceUserViewModel user);
         FinanceUserViewModel Find(string userName);
+	    FinanceUserViewModel Find(int id);
+
     }
 }

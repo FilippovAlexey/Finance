@@ -15,3 +15,5 @@ export * from './componentChartViewModel';
 export * from './dashboardTable';
 export * from './userFilterParams';
 export * from './userFilterValuesViewModel'
+
+export*from './financeProjectViewModel';

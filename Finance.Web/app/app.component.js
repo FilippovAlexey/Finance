@@ -12,11 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const index_1 = require("./_services/index");
 let AppComponent = class AppComponent {
-    constructor(userService, alertService) {
+    constructor(userService, alertService, projectService) {
         this.userService = userService;
         this.alertService = alertService;
+        this.projectService = projectService;
+        this.fProjects = new Array();
         this.loadingName = false;
         index_1.GlobalService.updateIsLoggedIn();
+    }
+    ngOnInit() {
+        this.getProjects();
+    }
+    getProjects() {
+        this.projectService.getAll().subscribe((data) => this.fProjects = data, error => this.alertService.error(error));
     }
     get IsLoggedIn() {
         return index_1.GlobalService.isLoggedIn;
@@ -42,7 +50,9 @@ AppComponent = __decorate([
         selector: 'app',
         templateUrl: 'app.component.html'
     }),
-    __metadata("design:paramtypes", [index_1.UserService, index_1.AlertService])
+    __metadata("design:paramtypes", [index_1.UserService,
+        index_1.AlertService,
+        index_1.FinanceProjectService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

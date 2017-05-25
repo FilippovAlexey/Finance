@@ -16,6 +16,7 @@ namespace Finance.Services
         {
             For<Finance.DataAccess.Interfaces.IContext>().Use<Finance.DataAccess.Context>();
             For<IFinanceUserRepository>().Use<FinanceUserRepository>();
+	        For<IFinanceProjectRepository>().Use<FinanceProjectRepository>();
         }
     }
 }

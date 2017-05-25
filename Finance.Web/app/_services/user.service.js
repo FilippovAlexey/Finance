@@ -28,12 +28,6 @@ let UserService = class UserService {
             return response.json();
         });
     }
-    getDashboardTables() {
-        return this.http.get('api/User/GetDashboardTables', index_1.HeaderType.Json)
-            .map((response) => {
-            return response.json();
-        });
-    }
     getName() {
         return this.http.get('api/User/GetName', index_1.HeaderType.Json)
             .map((response) => {

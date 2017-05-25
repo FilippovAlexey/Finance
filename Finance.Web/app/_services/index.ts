@@ -13,3 +13,4 @@ export * from './date.service';
 export * from './map-dictionary.service';
 export * from './view-data.service';
 export * from './register.service';
+export * from './finance-project.service';

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Finance.DataAccess.Interfaces
 {
-    public interface IFinanceProjectRepository: IRepository<FinanceProject>
-    {
-    }
+	public interface IFinanceProjectRepository : IRepository<FinanceProject>
+	{
+		IEnumerable<FinanceProject> GetAllById(int userId);
+	}
 }

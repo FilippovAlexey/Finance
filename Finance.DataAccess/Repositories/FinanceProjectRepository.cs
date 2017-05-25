@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Finance.DataAccess.Repositories
 {
@@ -13,7 +14,15 @@ namespace Finance.DataAccess.Repositories
     {
         public FinanceProjectRepository(IContext db) : base(db)
         {
-
+		
         }
+
+	    public IEnumerable<FinanceProject> GetAllById(int userId)
+	    {
+		    var result = _db.Set<FinanceProject>().Where(f => f.Owner.Id == userId).ToList();
+		    return result;
+	    }
+
+
     }
 }

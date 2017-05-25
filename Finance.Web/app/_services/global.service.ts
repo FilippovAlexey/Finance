@@ -3,6 +3,7 @@
 export const currentUserName: string = 'currentUser';
 
 export class GlobalService {
+
     static isLoggedIn: boolean = false;
     static currentUser: User;
 

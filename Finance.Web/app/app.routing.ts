@@ -12,7 +12,8 @@ import { MapDictionaryComponent} from './map-dictionary/index';
 import { ViewDataComponent } from './view-data/index'
 
 
-import { RegisterComponent }from './register/index'
+import { RegisterComponent } from './register/index'
+import {ProjectCrudComponent} from './project-crud/index';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -28,7 +29,9 @@ const appRoutes: Routes = [
     { path: 'users', component: ViewDataComponent },
 
 
-    { path: 'register', component: RegisterComponent},
+    { path: 'register', component: RegisterComponent },
+    { path: 'project', component: ProjectCrudComponent },
+    { path: 'project/:id', component: ProjectCrudComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' } 

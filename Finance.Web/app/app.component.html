@@ -11,10 +11,21 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a class="btn btn-default" [routerLink]="['/home']">Finance</a></li>
-               <li><a *ngIf="IsLoggedIn" [routerLink]="['/approve']">Projects</a></li>
-               <li><a *ngIf="IsLoggedIn" [routerLink]="['/addleave']">Create leave</a></li>
-               <li><a *ngIf="IsLoggedIn" [routerLink]="['/viewleaves']">View leaves</a></li>
-               <li><a *ngIf="IsLoggedIn" [routerLink]="['/calendar']">Team calendar</a></li>
+                <li  class="dropdown-toggle">
+                    <a *ngIf="IsLoggedIn"class="dropdown-toggle" role="button" data-toggle="dropdown">
+                        Projects
+                        <span class="caret"></span> 
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let object of fProjects">
+                            <a [routerLink]="['/project',object.id]">{{object.name}}</a>
+                        </li>
+                        <li><a [routerLink]="['/project']">Create new</a></li>
+                    </ul>
+                </li>
+                <li><a *ngIf="IsLoggedIn" [routerLink]="['/addleave']">Create leave</a></li>
+                <li><a *ngIf="IsLoggedIn" [routerLink]="['/viewleaves']">View leaves</a></li>
+                <li><a *ngIf="IsLoggedIn" [routerLink]="['/calendar']">Team calendar</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -41,5 +41,17 @@ namespace Finance.Services
             };
             return user;
         }
-    }
+
+	    public FinanceUserViewModel Find(int id)
+	    {
+		    FinanceUser fUser = _repository.FindOne(a => a.Id == id);
+		    FinanceUserViewModel user = new FinanceUserViewModel()
+		    {
+			    Id = (int)fUser?.Id,
+			    Name = fUser?.Name,
+			    UserName = fUser?.UserName
+		    };
+		    return user;
+	    }
+	}
 }

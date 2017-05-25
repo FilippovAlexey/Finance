@@ -30,6 +30,7 @@ const index_12 = require("./tab-control/index");
 const index_13 = require("./view-data/index");
 const index_14 = require("./pages/index");
 const index_15 = require("./register/index");
+const index_16 = require("./project-crud/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -59,7 +60,8 @@ AppModule = __decorate([
             index_13.ViewDataComponent,
             index_14.PagesComponent,
             index_12.Tab,
-            index_15.RegisterComponent
+            index_15.RegisterComponent,
+            index_16.ProjectCrudComponent
         ],
         providers: [
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
@@ -78,7 +80,8 @@ AppModule = __decorate([
             index_3.MapDictionaryService,
             index_3.GlobalService,
             index_3.ViewDataService,
-            index_3.RegisterService
+            index_3.RegisterService,
+            index_3.FinanceProjectService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.userName, this.model.password)
             .subscribe(
-            () => {
+            (data:any) => {console.log(data);
                 this.router.navigate([this.returnUrl]);
             },
             error => {

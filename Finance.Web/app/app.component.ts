@@ -1,5 +1,6 @@
-﻿import { Component } from '@angular/core';
-import { GlobalService as Global, UserService, AlertService } from "./_services/index";
+﻿import { Component, OnInit } from '@angular/core';
+import { GlobalService as Global, UserService, AlertService, FinanceProjectService} from "./_services/index";
+import {FinanceProjectViewModel} from './_models/index';
 
 @Component({
     moduleId: module.id,
@@ -7,11 +8,26 @@ import { GlobalService as Global, UserService, AlertService } from "./_services/
     templateUrl: 'app.component.html'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+    fProjects: Array<FinanceProjectViewModel> = new Array<FinanceProjectViewModel>();
 
-    constructor(private userService: UserService, private alertService: AlertService) {
+    constructor(private userService: UserService,
+        private alertService: AlertService,
+        private projectService: FinanceProjectService) {
         Global.updateIsLoggedIn();
     }
+
+    ngOnInit() {
+        this.getProjects();
+    }
+
+    getProjects() {
+        this.projectService.getAll().subscribe(
+            (data: Array<FinanceProjectViewModel>) => 
+                this.fProjects = data,
+                error => this.alertService.error(error));
+    }
+
     get IsLoggedIn() {
         return Global.isLoggedIn;
     }

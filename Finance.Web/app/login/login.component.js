@@ -39,7 +39,8 @@ let LoginComponent = class LoginComponent {
     login() {
         this.loading = true;
         this.authenticationService.login(this.model.userName, this.model.password)
-            .subscribe(() => {
+            .subscribe((data) => {
+            console.log(data);
             this.router.navigate([this.returnUrl]);
         }, error => {
             error._body = (JSON.parse(error.text())).error;

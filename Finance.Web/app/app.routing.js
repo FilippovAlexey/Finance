@@ -12,6 +12,7 @@ const index_8 = require("./approve/index");
 const index_9 = require("./map-dictionary/index");
 const index_10 = require("./view-data/index");
 const index_11 = require("./register/index");
+const index_12 = require("./project-crud/index");
 const appRoutes = [
     { path: '', component: index_1.HomeComponent, canActivate: [index_3.AuthGuard] },
     { path: 'login', component: index_2.LoginComponent },
@@ -25,6 +26,8 @@ const appRoutes = [
     { path: 'mapaccounts', component: index_9.MapDictionaryComponent },
     { path: 'users', component: index_10.ViewDataComponent },
     { path: 'register', component: index_11.RegisterComponent },
+    { path: 'project', component: index_12.ProjectCrudComponent },
+    { path: 'project/:id', component: index_12.ProjectCrudComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

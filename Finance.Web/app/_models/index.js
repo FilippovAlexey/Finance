@@ -20,4 +20,5 @@ __export(require("./componentChartViewModel"));
 __export(require("./dashboardTable"));
 __export(require("./userFilterParams"));
 __export(require("./userFilterValuesViewModel"));
+__export(require("./financeProjectViewModel"));
 //# sourceMappingURL=index.js.map

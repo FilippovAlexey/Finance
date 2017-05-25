@@ -8,8 +8,8 @@ namespace Finance.Services.ViewModels
 {
     public class FianceProjectViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public virtual List<string> Bills { get; set; }
-    }
+		public int Id { get; set; }
+	    public string Name { get; set; }
+	    public int OwnerId { get; set; }
+	}
 }

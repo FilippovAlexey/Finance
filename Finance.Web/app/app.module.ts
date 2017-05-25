@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, RegisterService, ApproveService, HttpService, LeaveService, KeysPipe, UserService, ReportService, TeamCalendarService, FileLoadService, DateService, MapDictionaryService, ViewDataService, GlobalService } from './_services/index';
+import { AlertService, AuthenticationService, RegisterService, FinanceProjectService,  ApproveService, HttpService, LeaveService, KeysPipe, UserService, ReportService, TeamCalendarService, FileLoadService, DateService, MapDictionaryService, ViewDataService, GlobalService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { AddLeaveComponent, HistoryLeaveComponent } from './leave/index';
@@ -24,6 +24,7 @@ import { PagesComponent } from './pages/index';
 
 
 import { RegisterComponent } from './register/index';
+import {ProjectCrudComponent} from './project-crud/index';
 
 @NgModule({
     imports: [
@@ -52,7 +53,8 @@ import { RegisterComponent } from './register/index';
         PagesComponent,
         Tab,
 
-        RegisterComponent
+        RegisterComponent,
+        ProjectCrudComponent
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -72,7 +74,8 @@ import { RegisterComponent } from './register/index';
         GlobalService,
         ViewDataService,
 
-        RegisterService
+        RegisterService,
+        FinanceProjectService
     ],
     bootstrap: [AppComponent]
 })

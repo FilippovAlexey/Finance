@@ -18,3 +18,9 @@
 /Finance.Web/node_modules
 /node_modules/ng2-file-upload
 /packages
+
+
+[Aa]pp/*.js
+[Aa]pp/*.js.map
+[Aa]pp/**/*.js
+[Aa]pp/**/*.js.map

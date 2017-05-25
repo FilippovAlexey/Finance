@@ -166,3 +166,13 @@ HttpError: Unauthorized
 StatusCode: Unauthorized
 HttpError: Unauthorized
 
+2017/05/24 19:13:19.309: Controller: Project | Action name: GetById | The operation was canceled. |    at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Web.Http.HostAuthenticationFilter.<AuthenticateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()

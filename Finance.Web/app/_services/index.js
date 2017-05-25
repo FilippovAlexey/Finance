@@ -18,4 +18,5 @@ __export(require("./date.service"));
 __export(require("./map-dictionary.service"));
 __export(require("./view-data.service"));
 __export(require("./register.service"));
+__export(require("./finance-project.service"));
 //# sourceMappingURL=index.js.map
