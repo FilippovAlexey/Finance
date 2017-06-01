@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Finance.DataAccess;
 using Finance.Services.Interfaces;
 using Finance.Services.ViewModels;
 using Finance.Web.Helpers;
@@ -37,6 +38,14 @@ namespace MedeStaff.Web.Controllers
 	    public IHttpActionResult GetById(int id)
 	    {
 		    var result = _projectRepo.GetById(id);
+		    return Ok(result);
+	    }
+
+	    [HttpGet]
+	    public IHttpActionResult GetMembers(int id)
+	    {
+		    var context = new Context();
+		    var result = context.FinanceProjects.FirstOrDefault(p => p.Id == id)?.Members.Select(u=>new FinanceUserViewModel {Id = u.Id, Name = u.Name}).ToList();
 		    return Ok(result);
 	    }
 

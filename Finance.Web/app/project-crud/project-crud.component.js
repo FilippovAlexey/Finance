@@ -19,24 +19,24 @@ let ProjectCrudComponent = class ProjectCrudComponent {
         this.alertService = alertService;
         this.route = route;
         this.fProjectService = fProjectService;
-        this.paramId = -1;
         this.isViewMode = false;
         this.isEditMode = false;
         this.isCreateMode = false;
         this.model = new index_2.FinanceProjectViewModel();
+        this.userList = new Array();
         this.loading = false;
         this.header = "";
     }
     ngOnInit() {
         this.sub = this.route.params.subscribe((params) => {
-            this.paramId = +params['id'];
+            this.paramId = params['new'];
         });
-        if (!isNaN(this.paramId)) {
-            this.viewMode();
+        if (this.paramId == "new") {
+            this.createMode();
             this.header = this.model.name;
         }
         else {
-            this.createMode();
+            this.viewMode();
         }
     }
     toEditMode() {
@@ -60,14 +60,18 @@ let ProjectCrudComponent = class ProjectCrudComponent {
         this.header = this.model.name;
     }
     loadData() {
-        this.fProjectService.getById(this.paramId).subscribe((data) => this.model = data, error => {
+        this.fProjectService.getById(index_1.GlobalService.selectedProject).subscribe((data) => this.model = data, error => {
+            this.alertService.error(error);
+            console.log(error);
+        });
+        this.fProjectService.getMembers(index_1.GlobalService.selectedProject).subscribe((data) => this.userList = data, error => {
             this.alertService.error(error);
             console.log(error);
         });
     }
     create() {
         this.fProjectService.create(this.model).subscribe((data) => {
-            this.paramId = data;
+            index_1.GlobalService.selectedProject = data;
             this.viewMode();
         }, error => this.alertService.error(error));
     }

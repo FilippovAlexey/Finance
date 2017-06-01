@@ -15,6 +15,7 @@ namespace Finance.Web.DependencyResolution
             For<IAppUserManager>().Use<AppUserManager>();
             For<IFinanceUserService>().Use<FinanceUserService>();
 	        For<IFinanceProjectService>().Use<FiananceProjectService>();
+	        For<IBillService>().Use<BillService>();
         }
 
         #endregion

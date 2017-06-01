@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GlobalService as Global, UserService, AlertService, FinanceProjectService} from "./_services/index";
 import {FinanceProjectViewModel} from './_models/index';
 
@@ -10,8 +11,10 @@ import {FinanceProjectViewModel} from './_models/index';
 
 export class AppComponent implements OnInit{
     fProjects: Array<FinanceProjectViewModel> = new Array<FinanceProjectViewModel>();
-
+    
     constructor(private userService: UserService,
+        private route: ActivatedRoute,
+        private router: Router,
         private alertService: AlertService,
         private projectService: FinanceProjectService) {
         Global.updateIsLoggedIn();
@@ -23,8 +26,10 @@ export class AppComponent implements OnInit{
 
     getProjects() {
         this.projectService.getAll().subscribe(
-            (data: Array<FinanceProjectViewModel>) => 
-                this.fProjects = data,
+            (data: Array<FinanceProjectViewModel>) => {
+                this.fProjects = data;
+                this.selectProject(this.fProjects[0].id);
+            },
                 error => this.alertService.error(error));
     }
 
@@ -41,6 +46,13 @@ export class AppComponent implements OnInit{
             (data: any) =>this.userName = data,
             error => this.alertService.error(error));
     }
+
+    selectProject(id: number) {
+        Global.selectedProject = id;
+        this.router.navigate(['/home']);
+
+    }
+
     get UserName() {
         if (this.IsLoggedIn) {
             this.loadName();

@@ -24,7 +24,6 @@ namespace Finance.Web.Controllers
 
         // POST api/Account/Logout
         [Route("Logout")]
-        [Authorize]
         public IHttpActionResult Logout()
         {
             _logger = new LoggingService();

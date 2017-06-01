@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
 const index_1 = require("./_services/index");
 let AppComponent = class AppComponent {
-    constructor(userService, alertService, projectService) {
+    constructor(userService, route, router, alertService, projectService) {
         this.userService = userService;
+        this.route = route;
+        this.router = router;
         this.alertService = alertService;
         this.projectService = projectService;
         this.fProjects = new Array();
@@ -24,7 +27,10 @@ let AppComponent = class AppComponent {
         this.getProjects();
     }
     getProjects() {
-        this.projectService.getAll().subscribe((data) => this.fProjects = data, error => this.alertService.error(error));
+        this.projectService.getAll().subscribe((data) => {
+            this.fProjects = data;
+            this.selectProject(this.fProjects[0].id);
+        }, error => this.alertService.error(error));
     }
     get IsLoggedIn() {
         return index_1.GlobalService.isLoggedIn;
@@ -34,6 +40,10 @@ let AppComponent = class AppComponent {
             return;
         this.loadingName = true;
         this.userService.getName().subscribe((data) => this.userName = data, error => this.alertService.error(error));
+    }
+    selectProject(id) {
+        index_1.GlobalService.selectedProject = id;
+        this.router.navigate(['/home']);
     }
     get UserName() {
         if (this.IsLoggedIn) {
@@ -51,6 +61,8 @@ AppComponent = __decorate([
         templateUrl: 'app.component.html'
     }),
     __metadata("design:paramtypes", [index_1.UserService,
+        router_1.ActivatedRoute,
+        router_1.Router,
         index_1.AlertService,
         index_1.FinanceProjectService])
 ], AppComponent);

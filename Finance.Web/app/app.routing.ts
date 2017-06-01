@@ -9,11 +9,12 @@ import { LoadDataComponent } from './load-data/index';
 import { TeamCalendarComponent } from './calendar/index';
 import { ApproveComponent } from './approve/index';
 import { MapDictionaryComponent} from './map-dictionary/index';
-import { ViewDataComponent } from './view-data/index'
+import { ViewDataComponent } from './view-data/index';
 
+import { RegisterComponent } from './register/index';
+import { ProjectCrudComponent } from './project-crud/index';
 
-import { RegisterComponent } from './register/index'
-import {ProjectCrudComponent} from './project-crud/index';
+import { PlanBudgetComponent } from './plan-budget/index';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
 
     { path: 'register', component: RegisterComponent },
     { path: 'project', component: ProjectCrudComponent },
-    { path: 'project/:id', component: ProjectCrudComponent },
+    { path: 'project/:new', component: ProjectCrudComponent },
+    { path: 'paln', component: PlanBudgetComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' } 

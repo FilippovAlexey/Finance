@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { FinanceProjectViewModel} from "../_models/index";
+import { FinanceProjectViewModel, FinanceUserViewModel} from "../_models/index";
 
 @Injectable()
 export class FinanceProjectService {
@@ -31,6 +31,13 @@ export class FinanceProjectService {
         return this.httpService.get('api/Project/GetById/' + id, HeaderType.Json)
             .map((response: Response) => {
                 return <FinanceProjectViewModel>response.json();
+            });
+    }
+
+    getMembers(projectId: number): Observable<Array<FinanceUserViewModel>> {
+        return this.httpService.get('api/Project/GetMembers/' + projectId, HeaderType.Json)
+            .map((response: Response) => {
+                return <Array<FinanceUserViewModel>>response.json();
             });
     }
 

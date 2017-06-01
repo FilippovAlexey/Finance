@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Finance.Services.Interfaces;
 
-namespace MedeStaff.Services
+namespace Finance.Services
 {
 	public class BillService:IBillService
 	{

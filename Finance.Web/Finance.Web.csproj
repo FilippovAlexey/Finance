@@ -275,6 +275,7 @@
     <Content Include="app\leave\add.leave.component.html" />
     <Content Include="app\map-dictionary\map-dictionary.component.html" />
     <Content Include="app\pages\pages.component.html" />
+    <Content Include="app\plan-budget\plan-budget.component.html" />
     <Content Include="app\project-crud\project-crud.component.html" />
     <Content Include="app\register\register.component.html" />
     <Content Include="app\report\report.component.html" />
@@ -445,6 +446,8 @@
     <TypeScriptCompile Include="app\map-dictionary\map-dictionary.component.ts" />
     <TypeScriptCompile Include="app\pages\index.ts" />
     <TypeScriptCompile Include="app\pages\pages.component.ts" />
+    <TypeScriptCompile Include="app\plan-budget\index.ts" />
+    <TypeScriptCompile Include="app\plan-budget\plan-budget.component.ts" />
     <TypeScriptCompile Include="app\project-crud\index.ts" />
     <TypeScriptCompile Include="app\project-crud\project-crud.component.ts" />
     <TypeScriptCompile Include="app\register\index.ts" />
@@ -503,6 +506,10 @@
     <ProjectReference Include="..\Finance.Common\Finance.Common.csproj">
       <Project>{167b1875-2129-44ee-ad33-1ff060f98b1d}</Project>
       <Name>Finance.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Finance.DataAccess\Finance.DataAccess.csproj">
+      <Project>{81c59b7a-0c56-48a8-8557-cf189ee907a9}</Project>
+      <Name>Finance.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Finance.Services\Finance.Services.csproj">
       <Project>{b76eb567-53f8-41ce-98e9-b71e9611f436}</Project>

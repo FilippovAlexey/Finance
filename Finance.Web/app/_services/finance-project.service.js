@@ -34,6 +34,12 @@ let FinanceProjectService = class FinanceProjectService {
             return response.json();
         });
     }
+    getMembers(projectId) {
+        return this.httpService.get('api/Project/GetMembers/' + projectId, index_1.HeaderType.Json)
+            .map((response) => {
+            return response.json();
+        });
+    }
 };
 FinanceProjectService = __decorate([
     core_1.Injectable(),

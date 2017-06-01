@@ -11,8 +11,8 @@ namespace Finance.DataAccess.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual IEnumerable<Bill> Bills { get; set; }
-	    public IEnumerable<FinanceUser> Members { get; set; }
+        public virtual List<Bill> Bills { get; set; }
+	    public virtual List<FinanceUser> Members { get; set; }
 	    public FinanceUser Owner { get; set; }
     }
 }

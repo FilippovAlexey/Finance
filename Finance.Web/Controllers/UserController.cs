@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Finance.Common;
 using Finance.Services.Interfaces;
 using Finance.Web.Helpers;
 
@@ -20,8 +21,13 @@ namespace Financenance.Web.Controllers
 
 	    public IHttpActionResult GetName()
 	    {
-		   var name = _fUserService.Find(HelperService.GetUserId(User)).Name;
-		    return Ok(name);
+		    int id = HelperService.GetUserId(User);
+		    if (id == -1) return InternalServerError(new FinanceExeption("Session expired!"));
+		    else
+		    {
+				var name = _fUserService.Find(id).Name;
+			    return Ok(name);
+			}
 	    }
     }
 }

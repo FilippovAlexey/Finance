@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit} from '@angular/core';
-import { User, UserFilterParams, UserFilterValuesViewModel, ProjectBu } from '../_models/index'
+import {  UserFilterParams, UserFilterValuesViewModel, ProjectBu } from '../_models/index'
 import { ViewDataService, AlertService } from '../_services/index';
 import { Tab, TabControl } from '../tab-control/index';
 
@@ -11,7 +11,6 @@ import { Tab, TabControl } from '../tab-control/index';
 
 
 export class ViewDataComponent implements OnInit {
-    userModel: Array<User> = new Array<User>();
     projectBuModel: Array<ProjectBu> = new Array<ProjectBu>();
     usersCount: number;
     projectBuCount: number;
@@ -29,7 +28,6 @@ export class ViewDataComponent implements OnInit {
         this.filter.projectBuPage = 1;
         this.getUsersCount();
         this.getProjectBuCount();
-        this.getUsers();
         this.getProjectsBu();
     }
 
@@ -51,27 +49,17 @@ export class ViewDataComponent implements OnInit {
         });
     }
 
-    getUsers() {
-        this.getUsersCount();
-        this.viewDataService.getUsers(this.filter).subscribe((data: Array<User>) => {
-            this.userModel = data;
-        }, error => {
-            error._body = (JSON.parse(error.text())).error;
-            this.alertService.error(error);
-        });
-    }
+   
 
     getNextPage() {
         if (this.usersCount / 20 > this.filter.page) {
             this.filter.page++;
-            this.getUsers();
         }
     }
 
     getPreviousPage() {
         if (this.filter.page > 1) {
             this.filter.page--;
-            this.getUsers();
         }
     }
 

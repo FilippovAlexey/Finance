@@ -31,6 +31,7 @@ const index_13 = require("./view-data/index");
 const index_14 = require("./pages/index");
 const index_15 = require("./register/index");
 const index_16 = require("./project-crud/index");
+const index_17 = require("./plan-budget/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -61,7 +62,8 @@ AppModule = __decorate([
             index_14.PagesComponent,
             index_12.Tab,
             index_15.RegisterComponent,
-            index_16.ProjectCrudComponent
+            index_16.ProjectCrudComponent,
+            index_17.PlanBudgetComponent
         ],
         providers: [
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },

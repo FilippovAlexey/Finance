@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService, FinanceProjectService } from '../_services/index';
-import { FinanceProjectViewModel } from '../_models/index';
+import { AlertService, FinanceProjectService , GlobalService as Global} from '../_services/index';
+import { FinanceProjectViewModel, FinanceUserViewModel } from '../_models/index';
 
 @Component({
     moduleId: module.id,
@@ -11,11 +11,12 @@ import { FinanceProjectViewModel } from '../_models/index';
 export class ProjectCrudComponent implements OnInit {
 
     private sub: any;
-    private paramId: number = -1;
+    private paramId: string;
     isViewMode = false;
     isEditMode = false;
-    isCreateMode= false;
+    isCreateMode = false;
     model: FinanceProjectViewModel = new FinanceProjectViewModel();
+    userList: Array<FinanceUserViewModel> = new Array<FinanceUserViewModel>();
     loading = false;
     header = "";
 
@@ -28,14 +29,14 @@ export class ProjectCrudComponent implements OnInit {
     ngOnInit() {
 
         this.sub = this.route.params.subscribe((params: any) => {
-            this.paramId = +params['id'];
+            this.paramId = params['new'];
         });
-        if (!isNaN(this.paramId)) {
-            this.viewMode();
+        if (this.paramId == "new") {
+            this.createMode();
             this.header = this.model.name;
         }
         else {
-            this.createMode();
+            this.viewMode();
         }
     }
 
@@ -65,9 +66,16 @@ export class ProjectCrudComponent implements OnInit {
     }
 
     loadData() {
-        this.fProjectService.getById(this.paramId).subscribe(
+        this.fProjectService.getById(Global.selectedProject).subscribe(
             (data: FinanceProjectViewModel) =>
                 this.model = data,
+            error => {
+                this.alertService.error(error);
+                console.log(error);
+            });
+        this.fProjectService.getMembers(Global.selectedProject).subscribe(
+            (data: Array<FinanceUserViewModel>) =>
+                this.userList = data,
             error => {
                 this.alertService.error(error);
                 console.log(error);
@@ -76,8 +84,8 @@ export class ProjectCrudComponent implements OnInit {
 
     create() {
         this.fProjectService.create(this.model).subscribe(
-            (data:number) => {
-                this.paramId = data;
+            (data: number) => {
+                Global.selectedProject = data;
                 this.viewMode();
             },
             error => this.alertService.error(error));

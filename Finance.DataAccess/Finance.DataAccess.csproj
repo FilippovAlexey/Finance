@@ -99,6 +99,34 @@
     <Compile Include="Migrations\201705232053005_2.Designer.cs">
       <DependentUpon>201705232053005_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705252000592_3.cs" />
+    <Compile Include="Migrations\201705252000592_3.Designer.cs">
+      <DependentUpon>201705252000592_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252002109_4.cs" />
+    <Compile Include="Migrations\201705252002109_4.Designer.cs">
+      <DependentUpon>201705252002109_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252003015_5.cs" />
+    <Compile Include="Migrations\201705252003015_5.Designer.cs">
+      <DependentUpon>201705252003015_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252004128_6.cs" />
+    <Compile Include="Migrations\201705252004128_6.Designer.cs">
+      <DependentUpon>201705252004128_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252007536_7.cs" />
+    <Compile Include="Migrations\201705252007536_7.Designer.cs">
+      <DependentUpon>201705252007536_7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252009190_8.cs" />
+    <Compile Include="Migrations\201705252009190_8.Designer.cs">
+      <DependentUpon>201705252009190_8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252012497_9.cs" />
+    <Compile Include="Migrations\201705252012497_9.Designer.cs">
+      <DependentUpon>201705252012497_9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BillRepository.cs" />
     <Compile Include="Repositories\FinanceProjectRepository.cs" />
@@ -123,6 +151,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705232053005_2.resx">
       <DependentUpon>201705232053005_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252000592_3.resx">
+      <DependentUpon>201705252000592_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252002109_4.resx">
+      <DependentUpon>201705252002109_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252003015_5.resx">
+      <DependentUpon>201705252003015_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252004128_6.resx">
+      <DependentUpon>201705252004128_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252007536_7.resx">
+      <DependentUpon>201705252007536_7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252009190_8.resx">
+      <DependentUpon>201705252009190_8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252012497_9.resx">
+      <DependentUpon>201705252012497_9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using Finance.DataAccess.Interfaces;
+﻿using System.Collections.Generic;
+using Finance.DataAccess.Interfaces;
 
 namespace Finance.DataAccess.Entities
 {
@@ -8,5 +9,6 @@ namespace Finance.DataAccess.Entities
         public string Name { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+	    public virtual List<FinanceProject> Projects { get; set; }
     }
 }

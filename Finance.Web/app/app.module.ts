@@ -24,7 +24,8 @@ import { PagesComponent } from './pages/index';
 
 
 import { RegisterComponent } from './register/index';
-import {ProjectCrudComponent} from './project-crud/index';
+import { ProjectCrudComponent } from './project-crud/index';
+import {PlanBudgetComponent} from './plan-budget/index';
 
 @NgModule({
     imports: [
@@ -54,7 +55,8 @@ import {ProjectCrudComponent} from './project-crud/index';
         Tab,
 
         RegisterComponent,
-        ProjectCrudComponent
+        ProjectCrudComponent,
+        PlanBudgetComponent
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

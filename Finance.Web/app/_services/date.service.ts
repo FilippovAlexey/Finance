@@ -12,7 +12,7 @@ export class DateService {
 
         date.setMonth(date.getMonth() + monthIncrement);
 
-        var dd;
+        var dd: any;
         if (fromFirstDay) {
             dd = 1;
         }

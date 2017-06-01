@@ -6,6 +6,7 @@ using Finance.DataAccess.Repositories;
 using StructureMap;
 using Finance.DataAccess.Interfaces.RepositoryInterfaces;
 using Finance.DataAccess.Repositories;
+using MedeStFinance.DataAccess.Interfaces;
 
 namespace Finance.Services
 {
@@ -17,6 +18,7 @@ namespace Finance.Services
             For<Finance.DataAccess.Interfaces.IContext>().Use<Finance.DataAccess.Context>();
             For<IFinanceUserRepository>().Use<FinanceUserRepository>();
 	        For<IFinanceProjectRepository>().Use<FinanceProjectRepository>();
+	        For<IBillRepository>().Use<BillRepository>();
         }
     }
 }

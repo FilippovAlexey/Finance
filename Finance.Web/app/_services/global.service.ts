@@ -1,11 +1,12 @@
-﻿import { User } from '../_models/index';
+﻿import { FinanceUserViewModel } from '../_models/index';
 
 export const currentUserName: string = 'currentUser';
 
 export class GlobalService {
 
     static isLoggedIn: boolean = false;
-    static currentUser: User;
+    static currentUser: FinanceUserViewModel;
+    static selectedProject:number;
 
     static getCurrentUser() {
         return localStorage.getItem(currentUserName);

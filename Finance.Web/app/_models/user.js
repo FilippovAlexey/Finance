@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class User {
+class FinanceUserViewModel {
 }
-exports.User = User;
+exports.FinanceUserViewModel = FinanceUserViewModel;
 //# sourceMappingURL=user.js.map

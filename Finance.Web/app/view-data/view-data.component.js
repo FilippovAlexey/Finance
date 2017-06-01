@@ -16,7 +16,6 @@ let ViewDataComponent = class ViewDataComponent {
     constructor(alertService, viewDataService) {
         this.alertService = alertService;
         this.viewDataService = viewDataService;
-        this.userModel = new Array();
         this.projectBuModel = new Array();
         this.filterData = new index_1.UserFilterValuesViewModel();
         this.filter = new index_1.UserFilterParams();
@@ -27,7 +26,6 @@ let ViewDataComponent = class ViewDataComponent {
         this.filter.projectBuPage = 1;
         this.getUsersCount();
         this.getProjectBuCount();
-        this.getUsers();
         this.getProjectsBu();
     }
     getUsersCount() {
@@ -46,25 +44,14 @@ let ViewDataComponent = class ViewDataComponent {
             this.alertService.error(error);
         });
     }
-    getUsers() {
-        this.getUsersCount();
-        this.viewDataService.getUsers(this.filter).subscribe((data) => {
-            this.userModel = data;
-        }, error => {
-            error._body = (JSON.parse(error.text())).error;
-            this.alertService.error(error);
-        });
-    }
     getNextPage() {
         if (this.usersCount / 20 > this.filter.page) {
             this.filter.page++;
-            this.getUsers();
         }
     }
     getPreviousPage() {
         if (this.filter.page > 1) {
             this.filter.page--;
-            this.getUsers();
         }
     }
     getNextProjectBuPage() {

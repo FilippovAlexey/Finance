@@ -16,12 +16,6 @@ let ViewDataService = class ViewDataService {
     constructor(httpService) {
         this.httpService = httpService;
     }
-    getUsers(filters) {
-        return this.httpService.post('api/ShowData/GetUsers', filters, index_1.HeaderType.Json)
-            .map((response) => {
-            return response.json();
-        });
-    }
     getUsersCount(filters) {
         return this.httpService.post('api/ShowData/GetUsersCount', filters, index_1.HeaderType.Json).map((response) => {
             return response.json();

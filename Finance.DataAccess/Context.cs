@@ -17,10 +17,14 @@ namespace Finance.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+	        modelBuilder.Entity<FinanceUser>()
+		        .HasMany<FinanceProject>(s => s.Projects)
+		        .WithMany(c => c.Members);
+	        //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         public DbSet<FinanceUser> FinanceUsers { get; set; }
         public DbSet<FinanceProject> FinanceProjects { get; set; }
-    }
+	    public DbSet<Bill> Bills { get; set; }
+	}
 }

@@ -22,12 +22,6 @@ let UserService = class UserService {
             return response.json();
         });
     }
-    getPlannerDays(plannedDate) {
-        return this.http.get('api/User/GetPlannedDays?plannedDate=' + plannedDate, index_1.HeaderType.Json)
-            .map((response) => {
-            return response.json();
-        });
-    }
     getName() {
         return this.http.get('api/User/GetName', index_1.HeaderType.Json)
             .map((response) => {
