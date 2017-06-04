@@ -16,7 +16,7 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['/project']"><span class="glyphicon glyphicon-cog"></span></a></li>
+                <li *ngIf="IsLoggedIn"><a [routerLink]="['/project']"><span class="glyphicon glyphicon-cog"></span></a></li>
                 <li class="dropdown-toggle">
                     <a *ngIf="IsLoggedIn"class="dropdown-toggle" role="button" data-toggle="dropdown">
                         Projects
