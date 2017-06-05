@@ -1,70 +1,11 @@
 ﻿<div class="row">
     <div class="col-md-2">
-        <label class="col-md-12">Team</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.teams" name="Teams" data-none-Selected-Text="Team" data-live-search="true" multiple data-selected-text-format="count > 3">
-            <option *ngFor="let object of filterData?.teams" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">BizUnit</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.bizUnits" name="BizUnits" data-none-Selected-Text="BizUnits" data-live-search="true" multiple data-selected-text-format="count > 3">
-            <option *ngFor="let object of filterData?.bizUnits" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">Account</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.accounts" name="Accounts" data-none-Selected-Text="Account" data-live-search="true" multiple data-selected-text-format="count > 3">
-            <option *ngFor="let object of filterData?.accounts" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">Location</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.locations" name="Locations" data-none-Selected-Text="Locations" data-live-search="true" multiple data-selected-text-format="count > 3">
-            <option *ngFor="let object of filterData?.locations" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">Project</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.projectBus" name="Projects" data-none-Selected-Text="Project" data-live-search="true" multiple data-selected-text-format="count > 3" data-actions-box="true">
-            <option *ngFor="let object of filterData?.projectBus" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">Component</label>
-        <select class="selectpicker col-md-12" [(ngModel)]="filterSelected.components" name="Components" data-none-Selected-Text="Component" data-live-search="true" multiple data-selected-text-format="count > 3" data-actions-box="true">
-            <option *ngFor="let object of filterData?.components" [ngValue]="object?.key">{{object?.value}}</option>
-        </select>
-    </div>
-</div>
-<br>
-<br>
-
-<div class="row">
-    <div class="col-md-2">
         <label for="StartDate">Start Date</label>
         <input type="date" class="form-control" id="StartDate" name="StartDate" [(ngModel)]="filterSelected.startDate" #startDate="ngModel" />
     </div>
     <div class="col-md-2">
         <label for="EndDate">End Date</label>
         <input type="date" class="form-control" id="EndDate" name="EndDate" [(ngModel)]="filterSelected.endDate" #endDate="ngModel" />
-    </div>
-    <div class="col-md-2">
-        <label for="interval">Date interval</label>
-        <select class="form-control" id="interval" (change)="setDateInterval($event.target.value)">
-            <option value="1mounth">Last month</option>
-            <option value="3mounth" selected>Last 3 monthes</option>
-            <option value="6mounth">Last 6 monthes</option>
-            <option value="1year">Last year</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label class="col-md-12">Interval</label>
-        <select class="selectpicker col-md-12" name="ReportInterval" [(ngModel)]="filterSelected.reportInterval" #reportInterval="ngModel">
-            <option [attr.value]="0">Monthly</option>
-            <option [attr.value]="1">Weekly</option>
-        </select>
-    </div>
-    <div class="col-md-2">
     </div>
     <div class="col-md-2">
         <button style="margin-top: 24px" [attr.disabled]="dataLoading ? true : null" class="btn btn-primary col-md-12" (click)="filtrate()">Get report</button>
@@ -74,68 +15,11 @@
 <br>
 <br>
 <img *ngIf="dataLoading" style="height:150px;width:150px;margin: auto;display: block;" src="http://www.mvgen.com/loader.gif" />
-
-<ng-container *ngIf="model.rows?.length > 0">
-    <div>
-
-        <div *ngIf="!dataLoading">
-            <div class="outerTable">
-                <div class="innerTable">
-
-                    <table class="table table-bordered" style="border-width:2px;">
-                        <tr>
-                            <th class=fix style="border-width:2px; visibility: collapse"></th>
-                            <th *ngFor="let title of model?.titles" style="border-right-width:2px;border-top-width:2px;border-bottom-width:2px;" colspan="3">
-                                {{title}}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class=fix style="border-right-width:2px;border-bottom-width:2px;border-left-width:2px;">Account</th>
-                            <ng-container *ngFor="let title of model?.titles">
-                                <th style="border-bottom-width:2px;">Hours</th>
-                                <th style="border-bottom-width:2px;">Hours%</th>
-                                <th style="border-right-width:2px;border-bottom-width:2px;">Hours/person</th>
-                            </ng-container>
-                        </tr>
-                        <tr *ngFor="let row of model?.rows">
-                            <th class=fix style="border-right-width:2px;border-bottom-width:2px;border-left-width:2px;">
-                                {{row.name}}
-                            </th>
-
-                            <td *ngFor="let cell of row?.cells">
-                                {{cell}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class=fix style="border-right-width:2px;border-left-width:2px;">
-                                Total
-                            </th>
-
-                            <td *ngFor="let total of model?.total" style="border-right-width:2px; border-top-width:2px;">
-                                {{total}}
-                            </td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <div>
-                <chart [options]="accountChartModel" (selection)="onAccountChartSelection($event)"></chart>
-            </div>
-            <br>
-            <div>
-                <chart [options]="componentChartModel" (selection)="onComponentChartSelection($event)"></chart>
-            </div>
-        </div>
-    </div>
-</ng-container>
-<ng-container *ngIf="model.rows?.length <= 0">
-    <h4>No Data</h4>
-</ng-container>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.selectpicker').selectpicker();
-        });
-    </script>
+<div class="col-md-12">
+    <chart [options]="billsChart"></chart>
+    <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+</div>
+<div class="col-md-12">
+    <chart [options]="goroupChart"></chart>
+    <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+</div>

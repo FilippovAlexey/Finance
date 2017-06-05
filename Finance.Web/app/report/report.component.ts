@@ -11,11 +11,9 @@ import { ChartModule } from 'angular2-highcharts';
 
 export class ReportComponent implements OnInit {
 
-    model: ReportSheetViewModel = new ReportSheetViewModel();
-    filterData: FilterValuesViewModel = new FilterValuesViewModel();
     filterSelected: FilterSelectedValuesViewModel = new FilterSelectedValuesViewModel();
-    accountChartModel: any;
-    componentChartModel: any;
+    billsChart: any;
+    goroupChart: any;
     dataLoading: boolean = false;
 
     constructor(
@@ -26,125 +24,107 @@ export class ReportComponent implements OnInit {
 
     ngOnInit() {
         this.loadFilterData();
-        this.filtrate();
-    }
-
-    buildAccountChart() {
-        let chartData: Array<any> = new Array<any>();
-        if (this.model.rows != null) {
-            for (var j = 0; j < this.model.rows.length; j++) {
-                let tmpData: number[] = [];
-                for (var i = 0; i < this.model.rows[j].cells.length; i++) {
-                    if ((i - 1) % 3 == 0) {
-                        tmpData.push(this.model.rows[j].cells[i]);
-                    }
-                }
-                chartData.push({
-                    data: tmpData,
-                    name: this.model.rows[j].name
-                })
+        this.goroupChart = {
+            title: { text: 'Bill Groups report' },
+            series: [{
+                name: 'Default',
+                data: [66354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 86354, 66354.5],
+                allowPointSelect: true
+            }, {
+                name: 'Office',
+                data: [2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 2500.5, 4075.5 ],
+                allowPointSelect: true
+            }, {
+                name: 'Employees',
+                data: [38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 38000, 56000],
+                allowPointSelect: true
+            }],
+            xAxis: {
+                categories: ['05.01.2017', '05.02.2017', '05.03.2017', '05.04.2017', '05.05.2017', '05.06.2017', '05.07.2017', '05.08.2017', '05.09.2017', '05.10.2017', '05.11.2017', '05.12.2017', '05.13.2017', '05.14.2017', '05.15.2017', '05.16.2017', '05.17.2017', '05.18.2017', '05.19.2017', '05.20.2017', '05.21.2017', '05.22.2017', '05.23.2017', '05.24.2017', '05.25.2017', '05.26.2017', '05.27.2017', '05.28.2017', '05.29.2017', '05.30.2017', '05.31.2017']
             }
-        }
-        this.accountChartModel = {
-            title: { text: '' },
-            chart: {
-                zoomType: 'x',
-                margin: 75},
-            series: chartData,
-            xAxis: [{
-                type: 'category',
-                categories: this.model.titles
-            }]
-        }
-    }
-
-    buildComponentChartChart() {
-        let categories: Array<any> = new Array<any>();
-        if (this.model.componentChart != null) {
-            let chartData: Array<any> = new Array<any>();
-
-            for (let i of this.model.componentChart.series) {
-                chartData.push({
-                    data: i.values,
-                    name: i.name
-                })
-            }
+        };
 
 
-            this.componentChartModel = {
-                
-                title: { text: '' },
-                
-                chart: {
-                    type: 'column',
-                    zoomType: 'x'
+        this.billsChart = {
+            title: { text: 'Bill Groups report' },
+            series: [{
+                data: [0, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 0],
+                    name: 'Main'
                 },
-                series: chartData,
-                xAxis: [{
-                    type: 'category',
-                    categories: this.model.componentChart.categories
-                }]
-            }
-        }
-    }
-
-    filtrate() {
-        this.dataLoading = true;
-        this.reportService.getFilteredReport(this.filterSelected).subscribe(
-            (data: ReportSheetViewModel) => {
-                if (data != null) {
-                    this.model = data;
-                    this.clearTotalHoutsPersons();
-                }
-                else {
-                    this.clearModel();
-                }
-                this.dataLoading = false;
-                this.buildAccountChart();
-                this.buildComponentChartChart();
-
+                {
+                    data: [9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9524.5, 9924.5, ],
+                name: 'MoneyBox'
             },
-            error => {
-                error._body = (JSON.parse(error.text())).error;
-                this.alertService.error(error);
-                this.dataLoading = false;
-            });
+            {
+                data: [50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000],
+                name: 'Emergency'
+            },
+            {
+                data: [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 3000],
+                name: 'Occupancy'
+            },
+            {
+                data: [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 450],
+                name: 'Utilities'
+            },
+            {
+                data: [400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 625.5],
+                name: 'Staff'
+            },
+            {
+                data: [6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 9000],
+                name: 'Malcolm Reynolds'
+            },
+            {
+                data: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 7500],
+                name: 'Zoy Washburne'
+            },
+            {
+                data: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 7500],
+                name: 'Hoban Washburne'
+            },
+            {
+                data: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 5500, 8000],
+                name: 'Inara Serra'
+            },
+            {
+                data: [4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 6000],
+                name: 'Jayne Cobb'
+            },
+            {
+                data: [4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 6000],
+                name: 'Kaylee Frye'
+            },
+            {
+                data: [3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 4500],
+                name: 'Simon Tam'
+            },
+            {
+                data: [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 3000],
+                name: 'River Tam'
+            },
+            {
+                data: [3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 4500],
+                name: 'Derrial Book'
+            }
+        ],
+            xAxis: {
+                categories: ['05.01.2017', '05.02.2017', '05.03.2017', '05.04.2017', '05.05.2017', '05.06.2017', '05.07.2017', '05.08.2017', '05.09.2017', '05.10.2017', '05.11.2017', '05.12.2017', '05.13.2017', '05.14.2017', '05.15.2017', '05.16.2017', '05.17.2017', '05.18.2017', '05.19.2017', '05.20.2017', '05.21.2017', '05.22.2017', '05.23.2017', '05.24.2017', '05.25.2017', '05.26.2017', '05.27.2017', '05.28.2017', '05.29.2017', '05.30.2017', '05.31.2017']
+            }
+        };
     }
 
+   
     loadFilterData() {
 
-        this.reportService.getFilterData().subscribe(
-            (data: FilterValuesViewModel) => {
-                this.filterData = data;
-                setTimeout(() => { $(".selectpicker")['selectpicker'](); }, 0);
-            },
-            error => this.alertService.error(error))
+   
         this.setDateInterval('3mounth');
         this.filterSelected.endDate = this.dateService.getDate(0);
         this.filterSelected.reportInterval = 0;
     }
 
 
-    onAccountChartSelection(e: any) {
-        this.accountChartModel.from = e.originalEvent.xAxis[0].min.toFixed(2);
-        this.accountChartModel.to = e.originalEvent.xAxis[0].max.toFixed(2);
-    }
-
-    onComponentChartSelection(e: any) {
-        this.componentChartModel.from = e.originalEvent.xAxis[0].min.toFixed(2);
-        this.componentChartModel.to = e.originalEvent.xAxis[0].max.toFixed(2);
-    }
-
-
-    private clearModel() {
-        if (this.model.rows != null && this.model.titles != null && this.model.total != null) {
-            this.model.rows.length = 0;
-            this.model.titles.length = 0;
-            this.model.total.length = 0;
-            this.model.componentChart.categories.length = 0;
-            this.model.componentChart.series.length = 0;
-        }
-    }
+ 
 
     setDateInterval(event: string) {
         switch (event) {
@@ -160,12 +140,6 @@ export class ReportComponent implements OnInit {
             case '1year':
                 this.filterSelected.startDate = this.dateService.getDate(-12, true);
                 break;
-        }
-    }
-
-    clearTotalHoutsPersons() {
-        for (let i = -1; i < this.model.total.length; i += 3) {
-            this.model.total[i] = " ";
         }
     }
 }
