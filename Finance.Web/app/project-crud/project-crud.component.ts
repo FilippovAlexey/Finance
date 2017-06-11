@@ -18,7 +18,8 @@ export class ProjectCrudComponent implements OnInit {
     model: FinanceProjectViewModel = new FinanceProjectViewModel();
     userList: Array<FinanceUserViewModel> = new Array<FinanceUserViewModel>();
     loading = false;
-    header = "";
+	header = "";
+	dataLoading = true;
 
     constructor(
         private router: Router,
@@ -37,7 +38,10 @@ export class ProjectCrudComponent implements OnInit {
         }
         else {
             this.viewMode();
-        }
+		}
+	    setTimeout(function () {
+		    this.dataLoading = false;
+	    }.bind(this), 300);
     }
 
     toEditMode() {

@@ -188,11 +188,19 @@ let HomeComponent = class HomeComponent {
                 }
             ]
         };
+        this.dataLoading = true;
         index_2.GlobalService.initCurrentUser();
     }
     ngOnInit() {
         this.model.futureLeaves = new Array();
         this.model.unapprovedLeaves = new Array();
+        setTimeout(function () { this.dataLoading = false; }.bind(this), 300);
+    }
+    pdf() {
+        window.location.href = 'http://localhost:50605/home/downloadpdf';
+    }
+    excel() {
+        window.location.href = 'http://localhost:50605/home/downloadex';
     }
 };
 HomeComponent = __decorate([

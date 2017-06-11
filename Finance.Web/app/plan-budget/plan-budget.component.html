@@ -1,332 +1,474 @@
 ﻿<div>
-    <div class="col-md-12" style="display: inline-block">
-        <h4>Planing date</h4>
-        <input type="date" class="form-control" name="plantDate" [(ngModel)]="plantDate" />
-        <button class="btn btn-default">Calculate</button>
-    </div>
-    <br />
+	<div class="col-md-12" style="display: inline-block">
+		<h4>Planing date</h4>
+		<input type="date" class="form-control" id="EndDate" name="EndDate" [(ngModel)]="filterSelected.endDate" #endDate="ngModel" />
+		<button class="btn btn-default">Calculate</button>
+	</div>
+	<br />
+	<img *ngIf="dataLoading" style="height:150px;width:150px;margin: auto;display: block;" src="http://www.mvgen.com/loader.gif" />
+	<div *ngIf="!dataLoading">
+		<div class="col-md-6">
+			<h2>
+				Bills
+				<span class="glyphicon glyphicon-download-alt"></span>
+			</h2>
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Default
+							</a>
+							<span class="badge badge-default badge-pill" style="float: right">105683.5</span>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item justify-content-between">
+									<a>Main</a>
+									<span *ngIf="!isStep" class="badge badge-default badge-pill">0</span>
+									<span *ngIf="isStep" class="badge badge-default badge-pill">5000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>MoneyBox</a>
+									<span class="badge badge-default badge-pill">55683.5</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Emergency</a>
+									<span *ngIf="!isStep" class="badge badge-default badge-pill">50000</span>
+									<span *ngIf="isStep" class="badge badge-default badge-pill">45000</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingTwo">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Office
+							</a>
+							<span class="badge badge-default badge-pill" style="float: right">5741</span>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item justify-content-between">
+									<a>Occupancy</a>
+									<span class="badge badge-default badge-pill">3000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Utilities</a>
+									<span class="badge badge-default badge-pill">450</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Stuff</a>
+									<span class="badge badge-default badge-pill">625.5</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingThree">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Employees
+							</a>
+							<span class="badge badge-default badge-pill" style="float: right">74500</span>
+						</h4>
 
-    <div class="col-md-6">
-        <h2>
-            Bills
-            <span class="glyphicon glyphicon-download-alt"></span>
-        </h2>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Default
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">105683.5</span>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Main</a>
-                                <span class="badge badge-default badge-pill">0</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>MoneyBox</a>
-                                <span class="badge badge-default badge-pill">55683.5</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Emergency</a>
-                                <span class="badge badge-default badge-pill">50000</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Office
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">5741</span>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Occupancy</a>
-                                <span class="badge badge-default badge-pill">3000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Utilities</a>
-                                <span class="badge badge-default badge-pill">450</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Stuff</a>
-                                <span class="badge badge-default badge-pill">625.5</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Employees
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">74500</span>
-                    </h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item justify-content-between">
+									<a>Malcolm Reynolds</a>
+									<span class="badge badge-default badge-pill">12000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Zoy Washburne</a>
+									<span class="badge badge-default badge-pill">10000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Hoban Washburne</a>
+									<span class="badge badge-default badge-pill">10000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Inara Serra</a>
+									<span class="badge badge-default badge-pill">10500</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Jayne Cobb</a>
+									<span class="badge badge-default badge-pill">8000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Kaylee Frye</a>
+									<span class="badge badge-default badge-pill">8000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Simon Tam</a>
+									<span class="badge badge-default badge-pill">6000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>River Tam</a>
+									<span class="badge badge-default badge-pill">4000</span>
+								</li>
+								<li class="list-group-item justify-content-between">
+									<a>Derrial Book</a>
+									<span class="badge badge-default badge-pill">6000</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<h2>
+				<span class="glyphicon glyphicon-download-alt"></span>
+				Main bill operations
+				<span class="glyphicon glyphicon-plus" style="color: green" data-toggle="modal" data-target="#exampleModal">
 
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Malcolm Reynolds</a>
-                                <span class="badge badge-default badge-pill">12000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Zoy Washburne</a>
-                                <span class="badge badge-default badge-pill">10000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Hoban Washburne</a>
-                                <span class="badge badge-default badge-pill">10000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Inara Serra</a>
-                                <span class="badge badge-default badge-pill">10500</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Jayne Cobb</a>
-                                <span class="badge badge-default badge-pill">8000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Kaylee Frye</a>
-                                <span class="badge badge-default badge-pill">8000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Simon Tam</a>
-                                <span class="badge badge-default badge-pill">6000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>River Tam</a>
-                                <span class="badge badge-default badge-pill">4000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Derrial Book</a>
-                                <span class="badge badge-default badge-pill">6000</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-    <h2>
-        <span class="glyphicon glyphicon-download-alt"></span>
-        Main bill operations
-        <span class="glyphicon glyphicon-plus" style="color: green">
+				</span>
+			</h2>
+			<ul class="list-group" style="max-height: 600px; overflow-y: scroll">
+				<li class="list-group-item justify-content-between" *ngIf="isStep">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">5000</span>
+						<span>Emergency</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px" data-toggle="modal" data-target="#exampleModal3"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red" data-toggle="modal" data-target="#exampleModal2"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">45579</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>MoneyBox</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">150</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Stuff</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">50.5</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Stuff</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">115</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Stuff</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">200</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Stuff</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">1500</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Derrial Book</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">1000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>River Tam</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">1500</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Simon Tam</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">2000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Kaylee Frye</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">2000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Jayne Cobb</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">2500</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Inara Serra</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">2500</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Hoban Washburne</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">2500</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Zoy Washburne</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">3000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Malcolm Reynolds</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">150</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Utilities</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">1000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Occupancy</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
+				<li class="list-group-item justify-content-between">
+					<div style="text-align: center;">
+						<span class="badge badge-default badge-pill" style="float: left;">70000</span>
+						<span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px; color: green"></span>
+						<span style="float: left; color: green">30d</span>
+						<span></span>
+						<span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
+						<span>Main</span>
+						<span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
+						<span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
+					</div>
+				</li>
 
-        </span>
-    </h2>
-        <ul class="list-group" style="max-height: 600px; overflow-y: scroll">
-        <li class="list-group-item justify-content-between">
-            <div style="text-align: center;">
-                <span class="badge badge-default badge-pill" style="float: left;">45579</span>
-                <span>Main</span>
-                <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                <span>MoneyBox</span>
-                <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between">
-            <div style="text-align: center;">
-                <span class="badge badge-default badge-pill" style="float: left;">150</span>
-                <span>Main</span>
-                <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                <span>Stuff</span>
-                <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between">
-            <div style="text-align: center;">
-                <span class="badge badge-default badge-pill" style="float: left;">50.5</span>
-                <span>Main</span>
-                <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                <span>Stuff</span>
-                <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between">
-            <div style="text-align: center;">
-                <span class="badge badge-default badge-pill" style="float: left;">115</span>
-                <span>Main</span>
-                <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                <span>Stuff</span>
-                <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-            </div>
-        </li>
-        <li class="list-group-item justify-content-between">
-            <div style="text-align: center;">
-                <span class="badge badge-default badge-pill" style="float: left;">200</span>
-                <span>Main</span>
-                <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                <span>Stuff</span>
-                <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-            </div>
-        </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">1500</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Derrial Book</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">1000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>River Tam</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">1500</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Simon Tam</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">2000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Kaylee Frye</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">2000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Jayne Cobb</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">2500</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Inara Serra</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">2500</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Hoban Washburne</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">2500</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Zoy Washburne</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">3000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Malcolm Reynolds</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">150</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Utilities</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">1000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Occupancy</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            <li class="list-group-item justify-content-between">
-                <div style="text-align: center;">
-                    <span class="badge badge-default badge-pill" style="float: left;">70000</span>
-                    <span class="glyphicon glyphicon-repeat" style="float: left; margin-left: 20px;color: green"></span>
-                    <span style="float: left;color: green">30d</span>
-                    <span></span>
-                    <span class="glyphicon glyphicon-arrow-right" style="color: blue"></span>
-                    <span>Main</span>
-                    <span class="glyphicon glyphicon-info-sign" style="margin-left: 50px"></span>
-                    <span class="glyphicon glyphicon-remove" style="float: right; color: red"></span>
-                </div>
-            </li>
-            
-        </ul>
-    </div>
+			</ul>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">New operation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body col-md-12">
+					<div class="col-md-12">
+						<label for="namea">From</label>
+						<select class="form-control" id="namea">
+							<option></option>
+							<option>Main</option>
+							<option>MoneyBox</option>
+							<option>Emergency</option>
+							<option>Occupancy</option>
+							<option>Utilities</option>
+							<option>Stuff</option>
+							<option>Malcolm Reynolds</option>
+							<option>Zoy Washburne</option>
+							<option>Hoban Washburne</option>
+							<option>Inara Serra</option>
+							<option>Jayne Cobb</option>
+							<option>Kaylee Frye</option>
+							<option>Simon Tam</option>
+							<option>River Tam</option>
+							<option>Derrial Book</option>
+						</select>
+						<label for="namea2">To</label>
+						<select class="form-control" id="namea2">
+							<option></option>
+							<option>Main</option>
+							<option>MoneyBox</option>
+							<option>Emergency</option>
+							<option>Occupancy</option>
+							<option>Utilities</option>
+							<option>Stuff</option>
+							<option>Malcolm Reynolds</option>
+							<option>Zoy Washburne</option>
+							<option>Hoban Washburne</option>
+							<option>Inara Serra</option>
+							<option>Jayne Cobb</option>
+							<option>Kaylee Frye</option>
+							<option>Simon Tam</option>
+							<option>River Tam</option>
+							<option>Derrial Book</option>
+						</select>
+						<label for="namea3">Value</label>
+						<input type="text" class="form-control" id="namea3" required />
+						<label for="name5">Date</label>
+						<input type="date" class="form-control" id="name5" />
+						<label for="name6">Interval</label>
+						<input type="text" class="form-control" id="name6" />
+						<label for="namea4">Coment</label>
+						<textarea class="form-control" id="namea4" required></textarea>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="step()">Save</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModal2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Remove?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body col-md-12">
+					Remove operation?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="rem()">Yes</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="exampleModal3">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Operation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body col-md-12">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<label for="namea" class="form-control">From</label>
+							<label for="namea2" class="form-control">To</label>
+							<label for="namea3" class="form-control">Value</label>
+							<label for="name5" class="form-control">Date</label>
+							<label for="name6" class="form-control">Interval</label>
+							<label for="namea4" class="form-control">Coment</label>
+							<label for="namea4" class="form-control">By</label>
+						</div>
+						<div class="col-md-6"></div>
+						<label class="form-control">Emergency</label>
+						<label class="form-control">Main</label>
+						<label class="form-control">5000</label>
+						<label class="form-control">06/12/2017</label>
+						<label class="form-control">0</label>
+						<label class="form-control">Money transfer</label>
+						<label class="form-control">Oleksii</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal2" >Remove</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

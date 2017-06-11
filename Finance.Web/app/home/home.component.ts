@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
     model: DashboardTable = new DashboardTable;
     colOptions: Object;
     pieGroupOptions: Object;
-    pieOptions: Object;
+	pieOptions: Object;
+	dataLoading: boolean;
 
     constructor(
         private userService: UserService,
@@ -193,13 +194,21 @@ export class HomeComponent implements OnInit {
                     ]
                 }
             ]
-        };
+		};
+	    this.dataLoading = true;
         Global.initCurrentUser();
     }
 
     ngOnInit() {
         this.model.futureLeaves = new Array();
-        this.model.unapprovedLeaves = new Array();
+		this.model.unapprovedLeaves = new Array();
+	    setTimeout(function() { this.dataLoading = false; }.bind(this), 300);
     }
 
+	pdf() {
+		window.location.href = 'http://localhost:50605/home/downloadpdf';
+	}
+	excel() {
+		window.location.href = 'http://localhost:50605/home/downloadex';
+	}
 }

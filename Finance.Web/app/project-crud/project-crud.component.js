@@ -26,6 +26,7 @@ let ProjectCrudComponent = class ProjectCrudComponent {
         this.userList = new Array();
         this.loading = false;
         this.header = "";
+        this.dataLoading = true;
     }
     ngOnInit() {
         this.sub = this.route.params.subscribe((params) => {
@@ -38,6 +39,9 @@ let ProjectCrudComponent = class ProjectCrudComponent {
         else {
             this.viewMode();
         }
+        setTimeout(function () {
+            this.dataLoading = false;
+        }.bind(this), 300);
     }
     toEditMode() {
         this.header = "Editing";

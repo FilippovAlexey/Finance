@@ -29,6 +29,22 @@ let DateService = class DateService {
             (dd > 9 ? '' : '0') + dd
         ].join('-');
     }
+    getD(monthIncrement) {
+        var date = new Date();
+        if (monthIncrement >= 12 || monthIncrement <= -12) {
+            date.setFullYear(date.getFullYear() + monthIncrement / 12);
+            monthIncrement = monthIncrement % 12;
+        }
+        date.setMonth(date.getMonth() + monthIncrement);
+        var dd;
+        dd = 31;
+        var mm = date.getMonth() + 1;
+        var yy = date.getFullYear();
+        return [yy,
+            (mm > 9 ? '' : '0') + mm,
+            (dd > 9 ? '' : '0') + dd
+        ].join('-');
+    }
 };
 DateService = __decorate([
     core_1.Injectable()

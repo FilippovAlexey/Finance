@@ -19,6 +19,7 @@ let ReportComponent = class ReportComponent {
         this.dateService = dateService;
         this.filterSelected = new index_1.FilterSelectedValuesViewModel();
         this.dataLoading = false;
+        this.contentLoaded = false;
     }
     ngOnInit() {
         this.loadFilterData();
@@ -42,7 +43,7 @@ let ReportComponent = class ReportComponent {
             }
         };
         this.billsChart = {
-            title: { text: 'Bill Groups report' },
+            title: { text: 'Bills report' },
             series: [{
                     data: [0, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 0],
                     name: 'Main'
@@ -109,10 +110,16 @@ let ReportComponent = class ReportComponent {
             }
         };
     }
+    load() {
+        this.dataLoading = true;
+        setTimeout(function () {
+            this.dataLoading = false;
+            this.contentLoaded = true;
+        }.bind(this), 300);
+    }
     loadFilterData() {
-        this.setDateInterval('3mounth');
-        this.filterSelected.endDate = this.dateService.getDate(0);
-        this.filterSelected.reportInterval = 0;
+        this.setDateInterval('1mounth');
+        this.filterSelected.endDate = this.dateService.getD(-1);
     }
     setDateInterval(event) {
         switch (event) {

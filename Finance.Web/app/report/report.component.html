@@ -8,18 +8,20 @@
         <input type="date" class="form-control" id="EndDate" name="EndDate" [(ngModel)]="filterSelected.endDate" #endDate="ngModel" />
     </div>
     <div class="col-md-2">
-        <button style="margin-top: 24px" [attr.disabled]="dataLoading ? true : null" class="btn btn-primary col-md-12" (click)="filtrate()">Get report</button>
+        <button style="margin-top: 24px" [attr.disabled]="dataLoading ? true : null" class="btn btn-primary col-md-12" (click)="load()">Get report</button>
     </div>
 </div>
 
 <br>
 <br>
 <img *ngIf="dataLoading" style="height:150px;width:150px;margin: auto;display: block;" src="http://www.mvgen.com/loader.gif" />
-<div class="col-md-12">
-    <chart [options]="billsChart"></chart>
-    <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
-</div>
-<div class="col-md-12">
-    <chart [options]="goroupChart"></chart>
-    <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+<div *ngIf="contentLoaded">
+	<div class="col-md-12">
+		<chart [options]="billsChart"></chart>
+		<span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+	</div>
+	<div class="col-md-12">
+		<chart [options]="goroupChart"></chart>
+		<span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+	</div>
 </div>

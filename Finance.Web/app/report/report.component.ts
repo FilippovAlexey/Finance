@@ -14,7 +14,8 @@ export class ReportComponent implements OnInit {
     filterSelected: FilterSelectedValuesViewModel = new FilterSelectedValuesViewModel();
     billsChart: any;
     goroupChart: any;
-    dataLoading: boolean = false;
+	dataLoading: boolean = false;
+	contentLoaded = false;
 
     constructor(
         private reportService: ReportService,
@@ -43,10 +44,8 @@ export class ReportComponent implements OnInit {
                 categories: ['05.01.2017', '05.02.2017', '05.03.2017', '05.04.2017', '05.05.2017', '05.06.2017', '05.07.2017', '05.08.2017', '05.09.2017', '05.10.2017', '05.11.2017', '05.12.2017', '05.13.2017', '05.14.2017', '05.15.2017', '05.16.2017', '05.17.2017', '05.18.2017', '05.19.2017', '05.20.2017', '05.21.2017', '05.22.2017', '05.23.2017', '05.24.2017', '05.25.2017', '05.26.2017', '05.27.2017', '05.28.2017', '05.29.2017', '05.30.2017', '05.31.2017']
             }
         };
-
-
         this.billsChart = {
-            title: { text: 'Bill Groups report' },
+            title: { text: 'Bills report' },
             series: [{
                 data: [0, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 20000, 0],
                     name: 'Main'
@@ -111,16 +110,24 @@ export class ReportComponent implements OnInit {
             xAxis: {
                 categories: ['05.01.2017', '05.02.2017', '05.03.2017', '05.04.2017', '05.05.2017', '05.06.2017', '05.07.2017', '05.08.2017', '05.09.2017', '05.10.2017', '05.11.2017', '05.12.2017', '05.13.2017', '05.14.2017', '05.15.2017', '05.16.2017', '05.17.2017', '05.18.2017', '05.19.2017', '05.20.2017', '05.21.2017', '05.22.2017', '05.23.2017', '05.24.2017', '05.25.2017', '05.26.2017', '05.27.2017', '05.28.2017', '05.29.2017', '05.30.2017', '05.31.2017']
             }
-        };
+		};
+	   
     }
 
+
+	load() {
+		this.dataLoading = true;
+		setTimeout(function () {
+			this.dataLoading = false;
+			this.contentLoaded = true;
+		}.bind(this), 300);
+	}
    
     loadFilterData() {
 
    
-        this.setDateInterval('3mounth');
-        this.filterSelected.endDate = this.dateService.getDate(0);
-        this.filterSelected.reportInterval = 0;
+        this.setDateInterval('1mounth');
+        this.filterSelected.endDate = this.dateService.getD(-1);
     }
 
 

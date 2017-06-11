@@ -1,134 +1,158 @@
-﻿<div>
-    <div class="col-md-6">
-        <h2>
-            Bills
-            <span class="glyphicon glyphicon-download-alt"></span>
-        </h2>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Default
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">66354,5</span>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Main</a>
-                                <span class="badge badge-default badge-pill">0</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>MoneyBox</a>
-                                <span class="badge badge-default badge-pill">9924.5</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Emergency</a>
-                                <span class="badge badge-default badge-pill">50000</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Office
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">4075.5</span>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Occupancy</a>
-                                <span class="badge badge-default badge-pill">3000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Utilities</a>
-                                <span class="badge badge-default badge-pill">450</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Stuff</a>
-                                <span class="badge badge-default badge-pill">625.5</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Employees
-                        </a>
-                        <span class="badge badge-default badge-pill" style="float: right">56000</span>
-                    </h4>
+﻿<img *ngIf="dataLoading" style="height:150px;width:150px;margin: auto;display: block;" src="http://www.mvgen.com/loader.gif" />
+<div *ngIf="!dataLoading">
+	<div class="col-md-6">
+		<h2>
+			Bills
+			<span class="glyphicon glyphicon-download-alt"  data-toggle="modal" data-target="#exampleModal"></span>
+		</h2>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+					<h4 class="panel-title">
+						<a class="collapsed" id="pop" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="False" aria-controls="collapseThree">
+							Default
+						</a>
+						<span class="badge badge-default badge-pill" style="float: right">66354,5</span>
+					</h4>
 
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                <a>Malcolm Reynolds</a>
-                                <span class="badge badge-default badge-pill">9000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Zoy Washburne</a>
-                                <span class="badge badge-default badge-pill">7500</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Hoban Washburne</a>
-                                <span class="badge badge-default badge-pill">7500</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Inara Serra</a>
-                                <span class="badge badge-default badge-pill">8000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Jayne Cobb</a>
-                                <span class="badge badge-default badge-pill">6000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Kaylee Frye</a>
-                                <span class="badge badge-default badge-pill">6000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Simon Tam</a>
-                                <span class="badge badge-default badge-pill">4500</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>River Tam</a>
-                                <span class="badge badge-default badge-pill">3000</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                <a>Derrial Book</a>
-                                <span class="badge badge-default badge-pill">4500</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="col-md-12">
-            <chart [options]="colOptions"></chart>
-            <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
-        </div>
-        <div class="col-md-4">
-            <chart [options]="pieGroupOptions"></chart>
-            <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
-            <chart [options]="pieOptions"></chart>
-            <span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
-        </div>
-    </div>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-body">
+						<ul class="list-group">
+							<li class="list-group-item justify-content-between">
+								<a>Main</a>
+								<span class="badge badge-default badge-pill">0</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>MoneyBox</a>
+								<span class="badge badge-default badge-pill">9924.5</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Emergency</a>
+								<span class="badge badge-default badge-pill">50000</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Office
+						</a>
+						<span class="badge badge-default badge-pill" style="float: right">4075.5</span>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+					<div class="panel-body">
+						<ul class="list-group">
+							<li class="list-group-item justify-content-between">
+								<a>Occupancy</a>
+								<span class="badge badge-default badge-pill">3000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Utilities</a>
+								<span class="badge badge-default badge-pill">450</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Stuff</a>
+								<span class="badge badge-default badge-pill">625.5</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Employees
+						</a>
+						<span class="badge badge-default badge-pill" style="float: right">56000</span>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<ul class="list-group">
+					
+
+							<li class="list-group-item justify-content-between">
+								<a>Malcolm Reynolds</a>
+								<span class="badge badge-default badge-pill">9000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Zoy Washburne</a>
+								<span class="badge badge-default badge-pill">7500</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Hoban Washburne</a>
+								<span class="badge badge-default badge-pill">7500</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Inara Serra</a>
+								<span class="badge badge-default badge-pill">8000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Jayne Cobb</a>
+								<span class="badge badge-default badge-pill">6000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Kaylee Frye</a>
+								<span class="badge badge-default badge-pill">6000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Simon Tam</a>
+								<span class="badge badge-default badge-pill">4500</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>River Tam</a>
+								<span class="badge badge-default badge-pill">3000</span>
+							</li>
+							<li class="list-group-item justify-content-between">
+								<a>Derrial Book</a>
+								<span class="badge badge-default badge-pill">4500</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="col-md-12">
+			<chart [options]="colOptions"></chart>
+			<span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"  data-toggle="modal" data-target="#exampleModal"></span>
+		</div>
+		<div class="col-md-4">
+			<chart [options]="pieGroupOptions"></chart>
+			<span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-4">
+			<chart [options]="pieOptions"></chart>
+			<span class="glyphicon glyphicon-download-alt" style="position: absolute; margin-top: 10px;margin-left: 10px"></span>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="exampleModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Export</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body col-md-12">
+					<button type="button" class="btn btn-default" data-dismiss="modal" (click)="pdf()">PDF</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"  (click)="excel()">EXCEL</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
